@@ -1,16 +1,18 @@
 package pe.edu.vallegrande.project.service;
 
-import pe.edu.vallegrande.project.model.Product;
+import pe.edu.vallegrande.project.model.Products;
 import java.util.List;
 import java.util.Optional;
 
 public interface ProductService {
 
-    List<Product> findAll();
+    List<Products> findAll();  
 
-    Optional<Product> findById(int id);
+    Optional<Products> findById(Long id);  
 
-    Product save(Product product);
+    Products save(Products product);  
 
-    Product update(Product product);
+    Products update(Products product);  
+
+    void delete(Long id); 
 }

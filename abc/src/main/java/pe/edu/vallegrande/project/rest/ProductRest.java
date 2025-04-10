@@ -1,9 +1,10 @@
 package pe.edu.vallegrande.project.rest;
 
-import pe.edu.vallegrande.project.model.Product;
+import pe.edu.vallegrande.project.model.Products;
 import pe.edu.vallegrande.project.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,7 +17,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/v1/api/product")
+@RequestMapping("/v1/api/products")
 public class ProductRest {
 
     private final ProductService productService;
@@ -27,23 +28,28 @@ public class ProductRest {
     }
 
     @GetMapping
-    public List<Product> findAll() {
+    public List<Products> findAll() {
         return productService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Product> findById(@PathVariable int id) {
+    public Optional<Products> findById(@PathVariable Long id) {
         return productService.findById(id);
     }
 
     @PostMapping("/save")
-    public Product save(@RequestBody Product product) {
+    public Products save(@RequestBody Products product) {
         return productService.save(product);
     }
 
     @PutMapping("/update")
-    public Product update(@RequestBody Product product) {
+    public Products update(@RequestBody Products product) {
         return productService.update(product);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        productService.delete(id);  
+        return "Producto eliminado con ID: " + id;
+    }
 }

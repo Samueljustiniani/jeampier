@@ -1,9 +1,10 @@
 package pe.edu.vallegrande.project.repository;
 
-import pe.edu.vallegrande.project.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
+import pe.edu.vallegrande.project.model.Products;
 
 
-public interface ProductRepository extends JpaRepository<Product, Long> {
+
+public interface ProductRepository extends JpaRepository <Products, Long> {
 
 }
